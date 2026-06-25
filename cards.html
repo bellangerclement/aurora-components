@@ -4,11 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Certification PSDM et Évaluation ESSMS | Aurora Cabinet</title>
-  <meta name="description" content="Aurora Cabinet accompagne les Prestataires de Santé à Domicile pour leur certification PSDM et les ESSMS pour leur évaluation.">
+  <title>Évaluation ESSMS et Certification PSDM | Aurora Cabinet</title>
+  <meta name="description" content="Aurora Cabinet accompagne les ESSMS dans leur évaluation et les Prestataires de Santé à Domicile dans leur démarche de certification PSDM.">
 
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
       font-family: Arial, Helvetica, sans-serif;
@@ -26,12 +30,16 @@
     }
 
     .aurora-card {
+      display: flex;
+      flex-direction: column;
       overflow: hidden;
+      min-height: 100%;
       border: 1px solid #d8e9e6;
       border-radius: 24px;
       background: #ffffff;
       box-shadow: 0 12px 30px rgba(31, 62, 73, 0.10);
-      transition: transform .25s ease, box-shadow .25s ease;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
     .aurora-card:hover {
@@ -57,9 +65,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 1px solid rgba(255,255,255,.42);
+      border: 1px solid rgba(255, 255, 255, 0.42);
       border-radius: 50%;
-      background: rgba(255,255,255,.15);
+      background: rgba(255, 255, 255, 0.15);
       color: #ffffff;
       font-size: 45px;
       font-weight: 700;
@@ -67,6 +75,9 @@
     }
 
     .card-content {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
       padding: 32px 30px 34px;
       text-align: center;
     }
@@ -74,13 +85,18 @@
     .card-content h2 {
       margin-bottom: 12px;
       font-size: clamp(25px, 3vw, 32px);
-      letter-spacing: .4px;
+      letter-spacing: 0.4px;
       line-height: 1.15;
       text-transform: uppercase;
     }
 
-    .psdm h2 span { color: #38b99f; }
-    .essms h2 span { color: #438eb2; }
+    .psdm h2 span {
+      color: #38b99f;
+    }
+
+    .essms h2 span {
+      color: #438eb2;
+    }
 
     .card-content h3 {
       margin-bottom: 16px;
@@ -102,7 +118,9 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      align-self: center;
       min-height: 48px;
+      margin-top: auto;
       padding: 14px 25px;
       border-radius: 999px;
       background: linear-gradient(90deg, #243f49 0%, #56c6ae 100%);
@@ -110,37 +128,64 @@
       font-size: 16px;
       font-weight: 700;
       line-height: 1.2;
+      text-align: center;
       text-decoration: none;
-      transition: transform .2s ease, box-shadow .2s ease;
-    }
-
-    .card-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 16px rgba(31, 62, 73, .16);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .essms .card-button {
       background: linear-gradient(90deg, #243f49 0%, #4a98bc 100%);
     }
 
+    .card-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(31, 62, 73, 0.18);
+    }
+
     @media (max-width: 820px) {
-      body { padding: 16px; }
-      .aurora-cards { grid-template-columns: 1fr; gap: 22px; }
-      .card-header { min-height: 130px; }
-      .card-content { padding: 28px 22px 30px; }
+      body {
+        padding: 16px;
+      }
+
+      .aurora-cards {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+
+      .card-header {
+        min-height: 130px;
+      }
+
+      .card-content {
+        padding: 28px 22px 30px;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .aurora-card, .card-button { transition: none; }
-      .aurora-card:hover, .card-button:hover { transform: none; }
+      .aurora-card,
+      .card-button {
+        transition: none;
+      }
+
+      .aurora-card:hover,
+      .card-button:hover {
+        transform: none;
+      }
     }
   </style>
 </head>
 
 <body>
+
   <main class="aurora-cards" aria-label="Nos domaines d’intervention">
 
-    <article class="aurora-card psdm">
+    <article
+      class="aurora-card psdm"
+      data-url="https://www.aurora-cabinet.fr/certification-psdm"
+      tabindex="0"
+      role="link"
+      aria-label="Découvrir la certification PSDM"
+    >
       <div class="card-header">
         <div class="card-icon" aria-hidden="true">✓</div>
       </div>
@@ -149,18 +194,28 @@
         <h2>Certification <span>PSDM</span></h2>
         <h3>Prestataires de Santé à Domicile</h3>
         <p>
-          Découvrez une démarche de certification PSDM structurée, indépendante
-          et adaptée aux exigences applicables.
+          Découvrez une démarche de certification PSDM structurée,
+          indépendante et adaptée aux exigences applicables.
         </p>
-        <a class="card-button"
-           href="https://www.aurora-cabinet.fr/certification-psdm"
-           target="_top">
+
+        <a
+          class="card-button"
+          href="https://www.aurora-cabinet.fr/certification-psdm"
+          target="_blank"
+          rel="noopener"
+        >
           Découvrir la certification →
         </a>
       </div>
     </article>
 
-    <article class="aurora-card essms">
+    <article
+      class="aurora-card essms"
+      data-url="https://www.aurora-cabinet.fr/evaluation-essms"
+      tabindex="0"
+      role="link"
+      aria-label="Découvrir l’évaluation ESSMS"
+    >
       <div class="card-header">
         <div class="card-icon" aria-hidden="true">+</div>
       </div>
@@ -172,14 +227,39 @@
           Réalisez votre évaluation ESSMS avec une méthodologie claire,
           des évaluateurs qualifiés et une organisation professionnelle.
         </p>
-        <a class="card-button"
-           href="https://www.aurora-cabinet.fr/evaluation-essms"
-           target="_top">
+
+        <a
+          class="card-button"
+          href="https://www.aurora-cabinet.fr/evaluation-essms"
+          target="_blank"
+          rel="noopener"
+        >
           Découvrir l’évaluation →
         </a>
       </div>
     </article>
 
   </main>
+
+  <script>
+    document.querySelectorAll(".aurora-card").forEach(function (card) {
+      function openCard() {
+        window.open(card.dataset.url, "_blank", "noopener");
+      }
+
+      card.addEventListener("click", function (event) {
+        if (event.target.closest("a")) return;
+        openCard();
+      });
+
+      card.addEventListener("keydown", function (event) {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openCard();
+        }
+      });
+    });
+  </script>
+
 </body>
 </html>
