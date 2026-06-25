@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bandeau confiance Aurora Cabinet</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#fff;
+  padding:20px;
+  color:#243f49;
+}
+
+.trust-wrapper{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.trust-card{
+  background:linear-gradient(180deg,#f7fbfa,#ffffff);
+  border:1px solid #d9ece8;
+  border-radius:22px;
+  padding:28px 18px;
+  text-align:center;
+  box-shadow:0 8px 24px rgba(0,0,0,.06);
+}
+
+.icon{
+  width:72px;
+  height:72px;
+  margin:0 auto 18px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#203a43,#55c8b0);
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:34px;
+  font-weight:bold;
+}
+
+h3{
+  font-size:22px;
+  margin-bottom:6px;
+  color:#243f49;
+}
+
+p{
+  font-size:16px;
+  line-height:1.4;
+  color:#5f6e74;
+}
+
+@media(max-width:900px){
+  .trust-wrapper{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:550px){
+  .trust-wrapper{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="trust-wrapper">
+
+  <div class="trust-card">
+    <div class="icon">✦</div>
+    <h3>Expertise</h3>
+    <p>Une connaissance approfondie du secteur santé et médico-social.</p>
+  </div>
+
+  <div class="trust-card">
+    <div class="icon">⚖</div>
+    <h3>Indépendance</h3>
+    <p>Une démarche fondée sur l’impartialité et la transparence.</p>
+  </div>
+
+  <div class="trust-card">
+    <div class="icon">⌂</div>
+    <h3>Intervention nationale</h3>
+    <p>Des missions réalisées auprès des structures sur tout le territoire.</p>
+  </div>
+
+  <div class="trust-card">
+    <div class="icon">↗</div>
+    <h3>Réactivité</h3>
+    <p>Un accompagnement clair, disponible et adapté à vos délais.</p>
+  </div>
+
+</div>
+
+</body>
+</html>
