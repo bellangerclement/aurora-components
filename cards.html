@@ -5,14 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Certification PSDM et Évaluation ESSMS | Aurora Cabinet</title>
-  <meta name="description" content="Aurora Cabinet propose la certification PSDM et l’évaluation ESSMS, avec une démarche structurée, indépendante et adaptée aux exigences de la HAS.">
+  <meta name="description" content="Aurora Cabinet accompagne les Prestataires de Santé à Domicile pour leur certification PSDM et les ESSMS pour leur évaluation.">
 
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: Arial, Helvetica, sans-serif;
@@ -30,15 +26,12 @@
     }
 
     .aurora-card {
-      display: block;
       overflow: hidden;
       border: 1px solid #d8e9e6;
       border-radius: 24px;
       background: #ffffff;
-      color: #243f49;
-      text-decoration: none;
       box-shadow: 0 12px 30px rgba(31, 62, 73, 0.10);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      transition: transform .25s ease, box-shadow .25s ease;
     }
 
     .aurora-card:hover {
@@ -64,9 +57,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 1px solid rgba(255, 255, 255, 0.42);
+      border: 1px solid rgba(255,255,255,.42);
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(255,255,255,.15);
       color: #ffffff;
       font-size: 45px;
       font-weight: 700;
@@ -81,18 +74,13 @@
     .card-content h2 {
       margin-bottom: 12px;
       font-size: clamp(25px, 3vw, 32px);
-      letter-spacing: 0.4px;
+      letter-spacing: .4px;
       line-height: 1.15;
       text-transform: uppercase;
     }
 
-    .psdm h2 span {
-      color: #38b99f;
-    }
-
-    .essms h2 span {
-      color: #438eb2;
-    }
+    .psdm h2 span { color: #38b99f; }
+    .essms h2 span { color: #438eb2; }
 
     .card-content h3 {
       margin-bottom: 16px;
@@ -103,15 +91,18 @@
     }
 
     .card-content p {
-      margin: 0 auto 26px;
       max-width: 500px;
+      margin: 0 auto 26px;
       color: #5e6f76;
       font-size: 16.5px;
       line-height: 1.6;
     }
 
     .card-button {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
       padding: 14px 25px;
       border-radius: 999px;
       background: linear-gradient(90deg, #243f49 0%, #56c6ae 100%);
@@ -119,6 +110,13 @@
       font-size: 16px;
       font-weight: 700;
       line-height: 1.2;
+      text-decoration: none;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .card-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(31, 62, 73, .16);
     }
 
     .essms .card-button {
@@ -126,32 +124,15 @@
     }
 
     @media (max-width: 820px) {
-      body {
-        padding: 16px;
-      }
-
-      .aurora-cards {
-        grid-template-columns: 1fr;
-        gap: 22px;
-      }
-
-      .card-header {
-        min-height: 130px;
-      }
-
-      .card-content {
-        padding: 28px 22px 30px;
-      }
+      body { padding: 16px; }
+      .aurora-cards { grid-template-columns: 1fr; gap: 22px; }
+      .card-header { min-height: 130px; }
+      .card-content { padding: 28px 22px 30px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .aurora-card {
-        transition: none;
-      }
-
-      .aurora-card:hover {
-        transform: none;
-      }
+      .aurora-card, .card-button { transition: none; }
+      .aurora-card:hover, .card-button:hover { transform: none; }
     }
   </style>
 </head>
@@ -159,12 +140,7 @@
 <body>
   <main class="aurora-cards" aria-label="Nos domaines d’intervention">
 
-    <a
-      class="aurora-card psdm"
-      href="https://www.aurora-cabinet.fr/certification-psdm"
-      target="_top"
-      aria-label="Découvrir la certification PSDM"
-    >
+    <article class="aurora-card psdm">
       <div class="card-header">
         <div class="card-icon" aria-hidden="true">✓</div>
       </div>
@@ -176,16 +152,15 @@
           Découvrez une démarche de certification PSDM structurée, indépendante
           et adaptée aux exigences applicables.
         </p>
-        <span class="card-button">Découvrir la certification →</span>
+        <a class="card-button"
+           href="https://www.aurora-cabinet.fr/certification-psdm"
+           target="_top">
+          Découvrir la certification →
+        </a>
       </div>
-    </a>
+    </article>
 
-    <a
-      class="aurora-card essms"
-      href="https://www.aurora-cabinet.fr/evaluation-essms"
-      target="_top"
-      aria-label="Découvrir l’évaluation ESSMS"
-    >
+    <article class="aurora-card essms">
       <div class="card-header">
         <div class="card-icon" aria-hidden="true">+</div>
       </div>
@@ -197,9 +172,13 @@
           Réalisez votre évaluation ESSMS avec une méthodologie claire,
           des évaluateurs qualifiés et une organisation professionnelle.
         </p>
-        <span class="card-button">Découvrir l’évaluation →</span>
+        <a class="card-button"
+           href="https://www.aurora-cabinet.fr/evaluation-essms"
+           target="_top">
+          Découvrir l’évaluation →
+        </a>
       </div>
-    </a>
+    </article>
 
   </main>
 </body>
