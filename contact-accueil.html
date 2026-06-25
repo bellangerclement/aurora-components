@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Demander un devis | Aurora Cabinet</title>
+  <meta name="description" content="Contactez Aurora Cabinet pour une demande de devis en évaluation ESSMS ou certification PSDM : rendez-vous en visio, e-mail ou téléphone.">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #ffffff;
+      color: #243f49;
+      padding: 24px;
+    }
+
+    .contact-section {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 46px 34px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, #243f49 0%, #326d70 55%, #56c6ae 100%);
+      color: #ffffff;
+      box-shadow: 0 16px 40px rgba(31, 62, 73, 0.18);
+    }
+
+    .contact-intro {
+      max-width: 780px;
+      margin: 0 auto 32px;
+      text-align: center;
+    }
+
+    .contact-intro h2 {
+      margin-bottom: 14px;
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.15;
+    }
+
+    .contact-intro p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .contact-options {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .contact-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 245px;
+      padding: 28px 22px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.12);
+      text-align: center;
+    }
+
+    .contact-icon {
+      width: 62px;
+      height: 62px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.34);
+      color: #ffffff;
+      font-size: 30px;
+      font-weight: 700;
+    }
+
+    .contact-card h3 {
+      margin-bottom: 10px;
+      font-size: 21px;
+    }
+
+    .contact-card p {
+      margin-bottom: 20px;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 15.5px;
+      line-height: 1.5;
+    }
+
+    .contact-button {
+      display: inline-block;
+      margin-top: auto;
+      padding: 13px 20px;
+      border-radius: 999px;
+      background: #ffffff;
+      color: #243f49;
+      font-size: 15.5px;
+      font-weight: 700;
+      line-height: 1.2;
+      text-decoration: none;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .contact-button:hover {
+      transform: translateY(-2px);
+      background: #eefaf7;
+    }
+
+    @media (max-width: 850px) {
+      .contact-options {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-card {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 520px) {
+      body {
+        padding: 16px;
+      }
+
+      .contact-section {
+        padding: 34px 20px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .contact-button {
+        transition: none;
+      }
+
+      .contact-button:hover {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <section class="contact-section" aria-labelledby="contact-title">
+
+    <div class="contact-intro">
+      <h2 id="contact-title">Un projet d’évaluation ou de certification ?</h2>
+      <p>
+        Demandez un devis ou échangez avec Aurora Cabinet afin d’identifier
+        la démarche adaptée à votre structure.
+      </p>
+    </div>
+
+    <div class="contact-options">
+
+      <article class="contact-card">
+        <div class="contact-icon" aria-hidden="true">◉</div>
+        <h3>Prendre rendez-vous en visio</h3>
+        <p>Choisissez directement le créneau qui vous convient pour un premier échange.</p>
+        <a
+          class="contact-button"
+          href="https://calendar.app.google/7jzdAA7uXkQoLcRu8"
+          target="_blank"
+          rel="noopener"
+        >
+          Réserver un rendez-vous →
+        </a>
+      </article>
+
+      <article class="contact-card">
+        <div class="contact-icon" aria-hidden="true">@</div>
+        <h3>Demander un devis par e-mail</h3>
+        <p>Présentez votre besoin, votre activité et vos délais ; nous vous répondrons rapidement.</p>
+        <a
+          class="contact-button"
+          href="mailto:contact@aurora-cabinet.fr?subject=Demande%20de%20devis%20Aurora%20Cabinet"
+        >
+          contact@aurora-cabinet.fr
+        </a>
+      </article>
+
+      <article class="contact-card">
+        <div class="contact-icon" aria-hidden="true">☎</div>
+        <h3>Échanger par téléphone</h3>
+        <p>Parlons de votre projet d’évaluation ESSMS ou de certification PSDM.</p>
+        <a class="contact-button" href="tel:+33744473402">
+          07 44 47 34 02
+        </a>
+      </article>
+
+    </div>
+  </section>
+</body>
+</html>
