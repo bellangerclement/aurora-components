@@ -1,289 +1,178 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Composants Aurora Cabinet</title>
+<title>Aurora Cabinet | Certification PSDM et Évaluation ESSMS</title>
+<meta name="description" content="Aurora Cabinet accompagne les Prestataires de Santé à Domicile dans la certification PSDM et les ESSMS dans leur évaluation réglementaire HAS.">
 
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
 body{
-
-font-family:Arial,Helvetica,sans-serif;
-background:white;
-padding:30px;
-
+  font-family:Arial,Helvetica,sans-serif;
+  background:#fff;
+  padding:30px;
+  color:#223f49;
 }
 
-.container{
-
-max-width:1300px;
-margin:auto;
-
+.aurora-cards{
+  max-width:1300px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:32px;
 }
 
-.cards{
-
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:35px;
-
+.aurora-card{
+  text-decoration:none;
+  color:#223f49;
+  background:linear-gradient(180deg,#f8fbfa,#ffffff);
+  border:1px solid #d9ece8;
+  border-radius:26px;
+  overflow:hidden;
+  box-shadow:0 14px 34px rgba(0,0,0,.08);
+  transition:.3s ease;
 }
 
-.card{
-
-background:white;
-border-radius:24px;
-overflow:hidden;
-box-shadow:0 15px 35px rgba(0,0,0,.08);
-transition:.35s;
-border:1px solid #d9ece8;
-
+.aurora-card:hover{
+  transform:translateY(-7px);
+  box-shadow:0 20px 48px rgba(0,0,0,.14);
 }
 
-.card:hover{
-
-transform:translateY(-8px);
-
-box-shadow:0 20px 45px rgba(0,0,0,.15);
-
+.card-top{
+  height:165px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#223f49,#42c4aa);
 }
 
-.header{
-
-height:170px;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-background:linear-gradient(135deg,#203a43,#2bc0a4);
-
+.essms .card-top{
+  background:linear-gradient(135deg,#223f49,#3b8ec1);
 }
 
-.essms .header{
-
-background:linear-gradient(135deg,#203a43,#3b82c6);
-
+.icon{
+  width:86px;
+  height:86px;
+  padding:18px;
+  border-radius:50%;
+  background:rgba(255,255,255,.15);
+  border:1px solid rgba(255,255,255,.35);
 }
 
-.header img{
-
-width:95px;
-
+.icon svg{
+  width:100%;
+  height:100%;
+  stroke:#fff;
+  fill:none;
+  stroke-width:2.4;
+  stroke-linecap:round;
+  stroke-linejoin:round;
 }
 
-.content{
-
-padding:35px;
-
-text-align:center;
-
+.card-content{
+  padding:36px 34px 38px;
+  text-align:center;
 }
 
 h2{
-
-font-size:34px;
-
-margin-bottom:15px;
-
-color:#243f49;
-
+  font-size:32px;
+  text-transform:uppercase;
+  letter-spacing:.8px;
+  margin-bottom:14px;
 }
 
-.psdm h2 span{
-
-color:#2bc0a4;
-
-}
-
-.essms h2 span{
-
-color:#4d8fd3;
-
-}
+.psdm h2 span{color:#36bfa6}
+.essms h2 span{color:#3b8ec1}
 
 h3{
-
-font-size:20px;
-
-margin-bottom:18px;
-
-font-weight:500;
-
-color:#4b6972;
-
+  font-size:20px;
+  color:#4d6871;
+  margin-bottom:18px;
 }
 
 p{
-
-font-size:17px;
-
-line-height:1.6;
-
-color:#5f6e74;
-
-margin-bottom:35px;
-
+  font-size:17px;
+  line-height:1.6;
+  color:#5d6f76;
+  margin-bottom:30px;
 }
 
-.button{
-
-display:inline-block;
-
-padding:16px 34px;
-
-border-radius:50px;
-
-font-size:17px;
-
-font-weight:bold;
-
-color:white;
-
-text-decoration:none;
-
-background:linear-gradient(90deg,#203a43,#2bc0a4);
-
-transition:.3s;
-
+.btn{
+  display:inline-block;
+  padding:15px 30px;
+  border-radius:40px;
+  font-weight:bold;
+  color:#fff;
+  background:linear-gradient(90deg,#223f49,#42c4aa);
 }
 
-.button:hover{
-
-opacity:.9;
-
+.essms .btn{
+  background:linear-gradient(90deg,#223f49,#3b8ec1);
 }
 
-.essms .button{
+@media(max-width:850px){
+  .aurora-cards{
+    grid-template-columns:1fr;
+  }
 
-background:linear-gradient(90deg,#203a43,#4d8fd3);
-
+  h2{
+    font-size:27px;
+  }
 }
-
-.more{
-
-margin-top:25px;
-
-display:block;
-
-font-size:15px;
-
-text-decoration:none;
-
-font-weight:bold;
-
-color:#203a43;
-
-}
-
-@media(max-width:900px){
-
-.cards{
-
-grid-template-columns:1fr;
-
-}
-
-}
-
 </style>
-
 </head>
 
 <body>
 
-<div class="container">
+<main class="aurora-cards">
 
-<div class="cards">
+  <a class="aurora-card psdm" href="https://www.aurora-cabinet.fr/certification-psdm" target="_top" aria-label="Découvrir la certification PSDM Aurora Cabinet">
+    <div class="card-top">
+      <div class="icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6l7-3z"/>
+          <path d="M8.5 12.2l2.2 2.2 4.8-5"/>
+        </svg>
+      </div>
+    </div>
 
-<div class="card psdm">
+    <div class="card-content">
+      <h2>Certification <span>PSDM</span></h2>
+      <h3>Prestataires de Santé à Domicile</h3>
+      <p>Préparez votre démarche de certification PSDM selon le référentiel HAS, avec une approche structurée, indépendante et lisible.</p>
+      <div class="btn">Découvrir la certification →</div>
+    </div>
+  </a>
 
-<div class="header">
+  <a class="aurora-card essms" href="https://www.aurora-cabinet.fr/evaluation-essms" target="_top" aria-label="Découvrir l'évaluation ESSMS Aurora Cabinet">
+    <div class="card-top">
+      <div class="icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M4 20h16"/>
+          <path d="M6 20V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v14"/>
+          <path d="M9 8h1"/>
+          <path d="M14 8h1"/>
+          <path d="M9 12h1"/>
+          <path d="M14 12h1"/>
+          <path d="M10 20v-4h4v4"/>
+          <circle cx="17.5" cy="16.5" r="2.5"/>
+          <path d="M19.5 18.5l2 2"/>
+        </svg>
+      </div>
+    </div>
 
-<img src="https://raw.githubusercontent.com/google/material-design-icons/master/png/action/verified_user/materialicons/96dp/2x/baseline_verified_user_black_96dp.png">
+    <div class="card-content">
+      <h2>Évaluation <span>ESSMS</span></h2>
+      <h3>Établissements et services médico-sociaux</h3>
+      <p>Réalisez votre évaluation réglementaire HAS avec des évaluateurs qualifiés, une méthodologie claire et une organisation professionnelle.</p>
+      <div class="btn">Découvrir l’évaluation →</div>
+    </div>
+  </a>
 
-</div>
-
-<div class="content">
-
-<h2>Certification <span>PSDM</span></h2>
-
-<h3>Prestataires de Santé à Domicile</h3>
-
-<p>
-
-Obtenez votre certification conforme au référentiel HAS grâce à une organisation indépendante, structurée et reconnue.
-
-</p>
-
-<a class="button" href="https://www.aurora-cabinet.fr/certification-psdm">
-
-Découvrir la certification →
-
-</a>
-
-<a class="more" href="https://www.aurora-cabinet.fr/certification-psdm">
-
-En savoir plus
-
-</a>
-
-</div>
-
-</div>
-
-<div class="card essms">
-
-<div class="header">
-
-<img src="https://raw.githubusercontent.com/google/material-design-icons/master/png/action/search/materialicons/96dp/2x/baseline_search_black_96dp.png">
-
-</div>
-
-<div class="content">
-
-<h2>Évaluation <span>ESSMS</span></h2>
-
-<h3>Établissements et services médico-sociaux</h3>
-
-<p>
-
-Réalisez votre évaluation réglementaire HAS avec des évaluateurs expérimentés et une méthodologie reconnue.
-
-</p>
-
-<a class="button" href="https://www.aurora-cabinet.fr/evaluation-essms">
-
-Découvrir l'évaluation →
-
-</a>
-
-<a class="more" href="https://www.aurora-cabinet.fr/evaluation-essms">
-
-En savoir plus
-
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
+</main>
 
 </body>
-
 </html>
