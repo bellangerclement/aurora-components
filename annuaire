@@ -155,6 +155,7 @@
       font-size: 13px;
       font-weight: 800;
       text-decoration: none;
+      cursor: pointer;
     }
 
     .aurora-directory-link:hover {
@@ -202,7 +203,7 @@
       <h2>Organismes certifiés PSDM</h2>
       <p>
         Liste dynamique des certificats PSDM délivrés par Aurora Cabinet, avec
-        dates de certification, surveillances et accès au certificat Drive.
+        dates de certification, surveillances et accès au certificat.
       </p>
     </div>
 
@@ -215,158 +216,254 @@
 
   <script>
     (function () {
-      const root = document.querySelector(".aurora-certified-directory");
-      if (!root) return;
+      function initAuroraDirectory() {
+        const root = document.querySelector(".aurora-certified-directory");
+        if (!root) return;
 
-      const apiUrl = root.dataset.apiUrl;
-      const statusNode = root.querySelector("[data-directory-status]");
-      const listNode = root.querySelector("[data-directory-list]");
+        const apiUrl = root.dataset.apiUrl;
+        const statusNode = root.querySelector("[data-directory-status]");
+        const listNode = root.querySelector("[data-directory-list]");
 
-      const statusLabels = {
-        ACTIVE: "Actif",
-        EXPIRED: "Expiré",
-        SUSPENDED: "Suspendu",
-        WITHDRAWN: "Retiré",
-      };
+        if (!apiUrl || !statusNode || !listNode) return;
 
-      const surveillanceLabels = {
-        PLANNED: "Planifiée",
-        DUE: "À réaliser",
-        OVERDUE: "En retard",
-        COMPLETED: "Réalisée",
-        CANCELLED: "Annulée",
-      };
+        const statusLabels = {
+          ACTIVE: "Actif",
+          EXPIRED: "Expiré",
+          SUSPENDED: "Suspendu",
+          WITHDRAWN: "Retiré"
+        };
 
-      function escapeHtml(value) {
-        return String(value || "")
-          .replaceAll("&", "&amp;")
-          .replaceAll("<", "&lt;")
-          .replaceAll(">", "&gt;")
-          .replaceAll('"', "&quot;")
-          .replaceAll("'", "&#039;");
-      }
+        const surveillanceLabels = {
+          PLANNED: "Planifiée",
+          DUE: "À réaliser",
+          OVERDUE: "En retard",
+          COMPLETED: "Réalisée",
+          CANCELLED: "Annulée"
+        };
 
-      function formatDate(value) {
-        if (!value) return "-";
-        const date = new Date(value);
-        if (Number.isNaN(date.getTime())) return "-";
-
-        return new Intl.DateTimeFormat("fr-FR", {
-          day: "2-digit",
-          month: "2-digit",
-          year: "numeric",
-        }).format(date);
-      }
-
-      function formatSurveillance(plan) {
-        const label = surveillanceLabels[plan.status] || plan.status || "-";
-        const date = plan.completedAt
-          ? formatDate(plan.completedAt)
-          : formatDate(plan.dueAt);
-
-        return `${label} · ${date}`;
-      }
-
-      function renderCertificate(certificate) {
-        const client = certificate.client || {};
-        const surveillances = Array.isArray(certificate.surveillancePlans)
-          ? certificate.surveillancePlans
-          : [];
-        const sites = Array.isArray(certificate.sites) ? certificate.sites : [];
-
-        const siteLabel =
-          sites.length > 0
-            ? sites
-                .map((site) =>
-                  [site.name, [site.postalCode, site.city].filter(Boolean).join(" ")]
-                    .filter(Boolean)
-                    .join(" - ")
-                )
-                .join(", ")
-            : "-";
-
-        const surveillanceHtml =
-          surveillances.length > 0
-            ? surveillances
-                .map(
-                  (plan) =>
-                    `<span class="aurora-directory-chip">${escapeHtml(
-                      formatSurveillance(plan)
-                    )}</span>`
-                )
-                .join("")
-            : '<span class="aurora-directory-muted">Aucune surveillance publiée</span>';
-
-        const certificateLink = certificate.pdfPath
-          ? `<a class="aurora-directory-link" href="${escapeHtml(
-              certificate.pdfPath
-            )}" target="_blank" rel="noopener noreferrer">Voir le certificat</a>`
-          : '<span class="aurora-directory-muted">Certificat non rattaché</span>';
-
-        return `
-          <article class="aurora-directory-card">
-            <div class="aurora-directory-card-top">
-              <div>
-                <h3>${escapeHtml(client.companyName || "Organisme")}</h3>
-                <p>${client.siret ? `SIRET ${escapeHtml(client.siret)}` : "SIRET non publié"}</p>
-              </div>
-
-              <span class="aurora-directory-badge">
-                ${escapeHtml(statusLabels[certificate.status] || certificate.status || "-")}
-              </span>
-            </div>
-
-            <div class="aurora-directory-details">
-              <div>
-                <span>Certificat</span>
-                <strong>${escapeHtml(certificate.certificateNumber || "-")}</strong>
-                <p>Certifié le ${formatDate(certificate.issuedAt)}</p>
-                <p>Valide jusqu'au ${formatDate(certificate.expiresAt)}</p>
-              </div>
-
-              <div>
-                <span>Surveillances</span>
-                <div class="aurora-directory-chips">${surveillanceHtml}</div>
-              </div>
-
-              <div>
-                <span>Sites</span>
-                <p>${escapeHtml(siteLabel)}</p>
-                ${certificateLink}
-              </div>
-            </div>
-
-            ${
-              certificate.scope
-                ? `<p class="aurora-directory-scope">${escapeHtml(certificate.scope)}</p>`
-                : ""
-            }
-          </article>
-        `;
-      }
-
-      async function loadDirectory() {
-        try {
-          const response = await fetch(apiUrl, { cache: "no-store" });
-          if (!response.ok) throw new Error("HTTP " + response.status);
-
-          const payload = await response.json();
-          const certificates = Array.isArray(payload.data) ? payload.data : [];
-
-          if (certificates.length === 0) {
-            statusNode.textContent = "Aucun certificat publié.";
-            return;
-          }
-
-          statusNode.remove();
-          listNode.innerHTML = certificates.map(renderCertificate).join("");
-        } catch (error) {
-          statusNode.textContent =
-            "Annuaire indisponible. Vérifier l'URL API et les autorisations CORS.";
+        function escapeHtml(value) {
+          return String(value || "")
+            .replaceAll("&", "&amp;")
+            .replaceAll("<", "&lt;")
+            .replaceAll(">", "&gt;")
+            .replaceAll('"', "&quot;")
+            .replaceAll("'", "&#039;");
         }
+
+        function formatDate(value) {
+          if (!value) return "-";
+
+          const date = new Date(value);
+          if (Number.isNaN(date.getTime())) return "-";
+
+          return new Intl.DateTimeFormat("fr-FR", {
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric"
+          }).format(date);
+        }
+
+        function getCertificatesFromPayload(payload) {
+          if (Array.isArray(payload)) return payload;
+          if (Array.isArray(payload.data)) return payload.data;
+          if (Array.isArray(payload.certificates)) return payload.certificates;
+          if (Array.isArray(payload.results)) return payload.results;
+          return [];
+        }
+
+        function getClient(certificate) {
+          return certificate.client || certificate.customer || certificate.organization || {};
+        }
+
+        function getPdfUrl(certificate) {
+          return (
+            certificate.pdfPath ||
+            certificate.pdfUrl ||
+            certificate.certificateUrl ||
+            certificate.driveUrl ||
+            certificate.publicUrl ||
+            ""
+          );
+        }
+
+        function formatSurveillance(plan) {
+          const label = surveillanceLabels[plan.status] || plan.status || "-";
+          const date = plan.completedAt
+            ? formatDate(plan.completedAt)
+            : formatDate(plan.dueAt);
+
+          return `${label} · ${date}`;
+        }
+
+        function renderCertificate(certificate) {
+          const client = getClient(certificate);
+
+          const surveillances = Array.isArray(certificate.surveillancePlans)
+            ? certificate.surveillancePlans
+            : Array.isArray(certificate.surveillances)
+              ? certificate.surveillances
+              : [];
+
+          const sites = Array.isArray(certificate.sites)
+            ? certificate.sites
+            : [];
+
+          const siteLabel =
+            sites.length > 0
+              ? sites
+                  .map(function (site) {
+                    return [
+                      site.name,
+                      [site.postalCode, site.city].filter(Boolean).join(" ")
+                    ]
+                      .filter(Boolean)
+                      .join(" - ");
+                  })
+                  .join(", ")
+              : "-";
+
+          const surveillanceHtml =
+            surveillances.length > 0
+              ? surveillances
+                  .map(function (plan) {
+                    return (
+                      '<span class="aurora-directory-chip">' +
+                      escapeHtml(formatSurveillance(plan)) +
+                      "</span>"
+                    );
+                  })
+                  .join("")
+              : '<span class="aurora-directory-muted">Aucune surveillance publiée</span>';
+
+          const pdfUrl = getPdfUrl(certificate);
+
+          const certificateLink = pdfUrl
+            ? '<a class="aurora-directory-link" href="' +
+              escapeHtml(pdfUrl) +
+              '" target="_blank" rel="noopener noreferrer">Voir le certificat</a>'
+            : '<span class="aurora-directory-muted">Certificat non rattaché</span>';
+
+          const companyName =
+            client.companyName ||
+            client.name ||
+            client.legalName ||
+            certificate.companyName ||
+            "Organisme";
+
+          const siret =
+            client.siret ||
+            certificate.siret ||
+            "";
+
+          const certificateNumber =
+            certificate.certificateNumber ||
+            certificate.number ||
+            certificate.reference ||
+            "-";
+
+          const issuedAt =
+            certificate.issuedAt ||
+            certificate.certifiedAt ||
+            certificate.createdAt ||
+            "";
+
+          const expiresAt =
+            certificate.expiresAt ||
+            certificate.validUntil ||
+            certificate.expirationDate ||
+            "";
+
+          const scope =
+            certificate.scope ||
+            certificate.perimeter ||
+            certificate.description ||
+            "";
+
+          return `
+            <article class="aurora-directory-card">
+              <div class="aurora-directory-card-top">
+                <div>
+                  <h3>${escapeHtml(companyName)}</h3>
+                  <p>${siret ? "SIRET " + escapeHtml(siret) : "SIRET non publié"}</p>
+                </div>
+
+                <span class="aurora-directory-badge">
+                  ${escapeHtml(statusLabels[certificate.status] || certificate.status || "-")}
+                </span>
+              </div>
+
+              <div class="aurora-directory-details">
+                <div>
+                  <span>Certificat</span>
+                  <strong>${escapeHtml(certificateNumber)}</strong>
+                  <p>Certifié le ${formatDate(issuedAt)}</p>
+                  <p>Valide jusqu'au ${formatDate(expiresAt)}</p>
+                </div>
+
+                <div>
+                  <span>Surveillances</span>
+                  <div class="aurora-directory-chips">${surveillanceHtml}</div>
+                </div>
+
+                <div>
+                  <span>Sites</span>
+                  <p>${escapeHtml(siteLabel)}</p>
+                  ${certificateLink}
+                </div>
+              </div>
+
+              ${
+                scope
+                  ? `<p class="aurora-directory-scope">${escapeHtml(scope)}</p>`
+                  : ""
+              }
+            </article>
+          `;
+        }
+
+        async function loadDirectory() {
+          try {
+            statusNode.textContent = "Chargement de l'annuaire...";
+
+            const response = await fetch(apiUrl, {
+              method: "GET",
+              cache: "no-store",
+              headers: {
+                Accept: "application/json"
+              }
+            });
+
+            if (!response.ok) {
+              throw new Error("HTTP " + response.status);
+            }
+
+            const payload = await response.json();
+            const certificates = getCertificatesFromPayload(payload);
+
+            if (certificates.length === 0) {
+              statusNode.textContent = "Aucun certificat publié.";
+              listNode.innerHTML = "";
+              return;
+            }
+
+            statusNode.remove();
+            listNode.innerHTML = certificates.map(renderCertificate).join("");
+          } catch (error) {
+            console.error("Erreur annuaire Aurora :", error);
+
+            statusNode.textContent =
+              "Annuaire indisponible. Vérifiez l'URL API, le format JSON ou les autorisations CORS.";
+          }
+        }
+
+        loadDirectory();
       }
 
-      loadDirectory();
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initAuroraDirectory);
+      } else {
+        initAuroraDirectory();
+      }
     })();
   </script>
 </body>
