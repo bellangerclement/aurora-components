@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    .aurora-contact-component {
+      --ink: #10201c;
+      --muted: #5c6f68;
+      --line: #dce8e3;
+      --soft: #f3faf7;
+      --primary: #0f766e;
+      --primary-dark: #064e3b;
+      --primary-soft: #e4f5f1;
+      --white: #ffffff;
+
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: #f7fbf9;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 28px;
+      overflow: hidden;
+    }
+
+    .aurora-contact-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .aurora-contact-intro,
+    .aurora-contact-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 10px 24px rgba(15, 118, 110, 0.06);
+    }
+
+    .aurora-contact-kicker {
+      margin: 0 0 10px;
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .aurora-contact-intro h2 {
+      margin: 0;
+      color: var(--ink);
+      font-size: clamp(26px, 3vw, 38px);
+      line-height: 1.08;
+    }
+
+    .aurora-contact-intro p {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    .aurora-contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .aurora-contact-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 8px;
+      padding: 12px 15px;
+      font-size: 14px;
+      font-weight: 800;
+      text-decoration: none;
+      transition: 0.2s ease;
+    }
+
+    .aurora-contact-button-primary {
+      border: 1px solid var(--primary);
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .aurora-contact-button-primary:hover {
+      background: var(--primary-dark);
+      border-color: var(--primary-dark);
+    }
+
+    .aurora-contact-button-secondary {
+      border: 1px solid #99d7ce;
+      background: var(--primary-soft);
+      color: var(--primary-dark);
+    }
+
+    .aurora-contact-button-secondary:hover {
+      border-color: var(--primary);
+      background: #d7f0eb;
+    }
+
+    .aurora-contact-note {
+      margin-top: 20px;
+      border-radius: 10px;
+      background: var(--soft);
+      padding: 14px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .aurora-contact-card h3 {
+      margin: 0 0 16px;
+      color: var(--ink);
+      font-size: 20px;
+      line-height: 1.25;
+    }
+
+    .aurora-contact-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .aurora-contact-item {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 12px;
+      align-items: start;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+      padding: 14px;
+    }
+
+    .aurora-contact-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: var(--primary-soft);
+      color: var(--primary-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 18px;
+    }
+
+    .aurora-contact-item span {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .aurora-contact-item a,
+    .aurora-contact-item strong {
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 800;
+      text-decoration: none;
+      word-break: break-word;
+    }
+
+    .aurora-contact-item a:hover {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+
+    .aurora-contact-footer {
+      margin-top: 18px;
+      border-top: 1px solid var(--line);
+      padding-top: 14px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    @media (max-width: 820px) {
+      .aurora-contact-component {
+        padding: 18px;
+      }
+
+      .aurora-contact-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .aurora-contact-intro,
+      .aurora-contact-card {
+        padding: 20px;
+      }
+
+      .aurora-contact-actions {
+        flex-direction: column;
+      }
+
+      .aurora-contact-button {
+        width: 100%;
+        box-sizing: border-box;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <section class="aurora-contact-component">
+    <div class="aurora-contact-layout">
+      <div class="aurora-contact-intro">
+        <p class="aurora-contact-kicker">Contact Aurora Cabinet</p>
+
+        <h2>Échanger avec Aurora Cabinet</h2>
+
+        <p>
+          Vous souhaitez obtenir des informations, demander un devis ou planifier
+          un échange concernant l’évaluation ESSMS ou la certification PSDM ?
+          Contactez-nous directement par téléphone, par email ou en réservant
+          un rendez-vous en ligne.
+        </p>
+
+        <div class="aurora-contact-actions">
+          <a
+            class="aurora-contact-button aurora-contact-button-primary"
+            href="https://calendar.app.google/7jzdAA7uXkQoLcRu8"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Réserver un rendez-vous
+          </a>
+
+          <a
+            class="aurora-contact-button aurora-contact-button-secondary"
+            href="mailto:contact@aurora-cabinet.fr"
+          >
+            Envoyer un email
+          </a>
+
+          <a
+            class="aurora-contact-button aurora-contact-button-secondary"
+            href="tel:+33744473402"
+          >
+            Appeler Aurora Cabinet
+          </a>
+        </div>
+
+        <div class="aurora-contact-note">
+          Pour une demande de devis, vous pouvez préciser votre structure, votre
+          activité, votre localisation, le périmètre concerné et l’échéance
+          souhaitée. Cela permettra de vous répondre plus efficacement.
+        </div>
+      </div>
+
+      <aside class="aurora-contact-card">
+        <h3>Coordonnées</h3>
+
+        <div class="aurora-contact-list">
+          <div class="aurora-contact-item">
+            <div class="aurora-contact-icon">✉</div>
+            <div>
+              <span>Email</span>
+              <a href="mailto:contact@aurora-cabinet.fr">
+                contact@aurora-cabinet.fr
+              </a>
+            </div>
+          </div>
+
+          <div class="aurora-contact-item">
+            <div class="aurora-contact-icon">☎</div>
+            <div>
+              <span>Téléphone</span>
+              <a href="tel:+33744473402">
+                07 44 47 34 02
+              </a>
+            </div>
+          </div>
+
+          <div class="aurora-contact-item">
+            <div class="aurora-contact-icon">◷</div>
+            <div>
+              <span>Rendez-vous</span>
+              <a
+                href="https://calendar.app.google/7jzdAA7uXkQoLcRu8"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Planifier un échange en visio
+              </a>
+            </div>
+          </div>
+
+          <div class="aurora-contact-item">
+            <div class="aurora-contact-icon">⌂</div>
+            <div>
+              <span>Adresse</span>
+              <strong>
+                2 rue Gambetta<br />
+                49400 Saumur
+              </strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="aurora-contact-footer">
+          Aurora Cabinet accompagne les structures dans leurs démarches
+          d’évaluation ESSMS et dans le développement de son activité autour de
+          la certification PSDM.
+        </div>
+      </aside>
+    </div>
+  </section>
+</body>
+</html>
