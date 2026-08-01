@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Informations officielles PSDM</title>
+  <link rel="stylesheet" href="aurora-design.css">
+  <style>
+    body { overflow-y: hidden; }
+
+    .official-panel {
+      padding: 24px 18px;
+    }
+
+    .official-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .official-card {
+      padding: 18px;
+    }
+
+    .official-card--confirmed {
+      border-top: 4px solid var(--aurora-accent);
+    }
+
+    .official-card--waiting {
+      border-top: 4px solid var(--aurora-warning);
+    }
+
+    .official-card h3 {
+      margin: 0 0 12px;
+      color: var(--aurora-primary);
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .official-card ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .official-card li {
+      position: relative;
+      margin-bottom: 11px;
+      padding-left: 22px;
+      color: var(--aurora-text-light);
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+
+    .official-card--confirmed li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--aurora-accent-dark);
+      font-weight: 700;
+    }
+
+    .official-card--waiting li::before {
+      content: "•";
+      position: absolute;
+      left: 3px;
+      color: var(--aurora-warning);
+      font-weight: 700;
+    }
+
+    @media (min-width: 760px) {
+      .official-panel {
+        padding: 34px 30px;
+      }
+
+      .official-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="aurora-component">
+    <div class="aurora-container aurora-panel official-panel">
+      <p class="aurora-kicker">Lecture du dispositif</p>
+      <h2 class="aurora-section-title">Officiel et encore attendu</h2>
+
+      <div class="official-grid">
+        <article class="aurora-card official-card official-card--confirmed">
+          <h3>Informations confirmées</h3>
+          <ul>
+            <li>Le référentiel de bonnes pratiques professionnelles est publié.</li>
+            <li>La certification obligatoire est prévue par le cadre réglementaire.</li>
+            <li>Les organismes certificateurs devront être accrédités.</li>
+            <li>La HAS définit la procédure applicable à la certification.</li>
+          </ul>
+        </article>
+
+        <article class="aurora-card official-card official-card--waiting">
+          <h3>Éléments encore attendus</h3>
+          <ul>
+            <li>La publication de la procédure complète de certification.</li>
+            <li>L’ouverture opérationnelle du programme Cofrac.</li>
+            <li>La liste des organismes certificateurs accrédités.</li>
+            <li>Le calendrier consolidé des premiers cycles.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

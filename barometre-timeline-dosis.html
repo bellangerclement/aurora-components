@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chronologie PSDM</title>
+  <link rel="stylesheet" href="aurora-design.css">
+  <style>
+    body { overflow-y: hidden; }
+
+    .timeline-panel {
+      padding: 24px 18px;
+    }
+
+    .timeline-intro {
+      margin: 10px 0 0;
+      max-width: 760px;
+    }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 22px;
+      margin-top: 26px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 7px;
+      top: 4px;
+      bottom: 4px;
+      width: 1px;
+      background: var(--aurora-border);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 30px;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: 1px;
+      top: 8px;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: var(--aurora-accent);
+      box-shadow: 0 0 0 5px #eef8f5;
+    }
+
+    .timeline-date {
+      margin-bottom: 5px;
+      color: var(--aurora-accent-dark);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .timeline-item h3 {
+      margin: 0 0 7px;
+      color: var(--aurora-primary);
+      font-size: 1.18rem;
+      font-weight: 700;
+    }
+
+    .timeline-item p {
+      margin: 0;
+      color: var(--aurora-text-light);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .timeline-link {
+      display: inline-flex;
+      margin-top: 9px;
+      color: var(--aurora-primary-light);
+      font-size: 0.94rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .timeline-link:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    @media (min-width: 760px) {
+      .timeline-panel {
+        padding: 34px 30px;
+      }
+
+      .timeline {
+        gap: 26px;
+      }
+
+      .timeline-item {
+        padding-left: 38px;
+      }
+
+      .timeline::before {
+        left: 10px;
+      }
+
+      .timeline-item::before {
+        left: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="aurora-component">
+    <div class="aurora-container aurora-panel timeline-panel">
+      <p class="aurora-kicker">Repères officiels</p>
+      <h2 class="aurora-section-title">Chronologie</h2>
+      <p class="aurora-text timeline-intro">
+        Les principales étapes publiées à ce jour.
+      </p>
+
+      <div class="timeline">
+        <article class="timeline-item">
+          <div class="timeline-date">11 juin 2026</div>
+          <h3>Reprise des travaux de finalisation</h3>
+          <p>
+            La HAS indique avoir repris les travaux relatifs à la finalisation
+            de la procédure de certification PSDM.
+          </p>
+          <a class="timeline-link" href="https://www.has-sante.fr/" target="_blank" rel="noopener">
+            Consulter la source officielle
+          </a>
+        </article>
+
+        <article class="timeline-item">
+          <div class="timeline-date">13 mars 2026</div>
+          <h3>Publication du décret</h3>
+          <p>
+            Le décret complète le cadre juridique du futur dispositif de certification.
+          </p>
+          <a class="timeline-link" href="https://www.legifrance.gouv.fr/" target="_blank" rel="noopener">
+            Consulter Légifrance
+          </a>
+        </article>
+
+        <article class="timeline-item">
+          <div class="timeline-date">2024</div>
+          <h3>Publication du référentiel HAS</h3>
+          <p>
+            Le référentiel de bonnes pratiques professionnelles devient le socle
+            de la future certification.
+          </p>
+          <a class="timeline-link" href="https://www.has-sante.fr/" target="_blank" rel="noopener">
+            Consulter la source officielle
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

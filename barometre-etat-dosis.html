@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>État du dispositif PSDM</title>
+  <link rel="stylesheet" href="aurora-design.css">
+  <style>
+    body { overflow-y: hidden; }
+
+    .state-panel {
+      padding: 24px 18px;
+    }
+
+    .state-head {
+      margin-bottom: 22px;
+    }
+
+    .state-intro {
+      margin: 10px 0 0;
+      max-width: 760px;
+    }
+
+    .state-list {
+      display: grid;
+      gap: 0;
+      margin-top: 22px;
+      border-top: 1px solid var(--aurora-border);
+    }
+
+    .state-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 14px;
+      align-items: center;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--aurora-border);
+    }
+
+    .state-label {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      min-width: 0;
+      color: var(--aurora-primary);
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+
+    .state-dot {
+      width: 11px;
+      height: 11px;
+      flex: 0 0 auto;
+      border-radius: 50%;
+    }
+
+    .state-dot--done {
+      background: var(--aurora-accent);
+    }
+
+    .state-dot--waiting {
+      background: var(--aurora-warning);
+    }
+
+    .state-dot--pending {
+      background: #c9d1d3;
+    }
+
+    .state-summary {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .summary-box {
+      padding: 16px 18px;
+      background: var(--aurora-soft);
+      border: 1px solid var(--aurora-border);
+      border-radius: 14px;
+    }
+
+    .summary-box strong {
+      display: block;
+      color: var(--aurora-primary);
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .summary-box span {
+      color: var(--aurora-text-light);
+      font-size: 0.95rem;
+    }
+
+    .state-note {
+      margin: 20px 0 0;
+      padding-left: 14px;
+      border-left: 3px solid var(--aurora-accent);
+      color: var(--aurora-text-light);
+      font-size: 1rem;
+    }
+
+    @media (min-width: 760px) {
+      .state-panel {
+        padding: 34px 30px;
+      }
+
+      .state-summary {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 520px) {
+      .state-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .aurora-chip {
+        width: fit-content;
+        margin-left: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="aurora-component">
+    <div class="aurora-container aurora-panel state-panel">
+      <div class="state-head">
+        <p class="aurora-kicker">Situation réglementaire</p>
+        <h2 class="aurora-section-title">État du dispositif</h2>
+        <p class="aurora-text state-intro">
+          Lecture synthétique des principales étapes de mise en œuvre de la certification PSDM.
+        </p>
+      </div>
+
+      <div class="state-list">
+        <div class="state-row">
+          <div class="state-label">
+            <span class="state-dot state-dot--done"></span>
+            Référentiel HAS
+          </div>
+          <span class="aurora-chip aurora-chip--success">Publié</span>
+        </div>
+
+        <div class="state-row">
+          <div class="state-label">
+            <span class="state-dot state-dot--done"></span>
+            Décret
+          </div>
+          <span class="aurora-chip aurora-chip--success">Publié</span>
+        </div>
+
+        <div class="state-row">
+          <div class="state-label">
+            <span class="state-dot state-dot--done"></span>
+            Cadre réglementaire
+          </div>
+          <span class="aurora-chip aurora-chip--success">Publié</span>
+        </div>
+
+        <div class="state-row">
+          <div class="state-label">
+            <span class="state-dot state-dot--waiting"></span>
+            Procédure HAS
+          </div>
+          <span class="aurora-chip aurora-chip--warning">En attente</span>
+        </div>
+
+        <div class="state-row">
+          <div class="state-label">
+            <span class="state-dot state-dot--pending"></span>
+            Programme Cofrac
+          </div>
+          <span class="aurora-chip aurora-chip--pending">En attente</span>
+        </div>
+
+        <div class="state-row">
+          <div class="state-label">
+            <span class="state-dot state-dot--pending"></span>
+            Organismes certificateurs accrédités
+          </div>
+          <span class="aurora-chip aurora-chip--pending">En attente</span>
+        </div>
+
+        <div class="state-row">
+          <div class="state-label">
+            <span class="state-dot state-dot--pending"></span>
+            Premières certifications
+          </div>
+          <span class="aurora-chip aurora-chip--pending">Non démarrées</span>
+        </div>
+      </div>
+
+      <div class="state-summary">
+        <div class="summary-box">
+          <strong>3 étapes</strong>
+          <span>validées</span>
+        </div>
+
+        <div class="summary-box">
+          <strong>4 étapes</strong>
+          <span>restantes</span>
+        </div>
+      </div>
+
+      <p class="state-note">
+        La prochaine évolution majeure attendue est la publication de la procédure
+        de certification par la HAS.
+      </p>
+    </div>
+  </section>
+</body>
+</html>

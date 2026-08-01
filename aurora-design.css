@@ -1,0 +1,135 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --aurora-primary: #243f49;
+  --aurora-primary-light: #3d6a78;
+  --aurora-accent: #56c6ae;
+  --aurora-accent-dark: #38b99f;
+  --aurora-background: #ffffff;
+  --aurora-soft: #f7fbfa;
+  --aurora-border: #dce9e6;
+  --aurora-text: #243f49;
+  --aurora-text-light: #68767c;
+  --aurora-success: #2f8f7f;
+  --aurora-warning: #c88933;
+  --aurora-muted: #aeb9bc;
+
+  --aurora-radius-lg: 26px;
+  --aurora-radius-md: 18px;
+  --aurora-shadow: 0 12px 30px rgba(31, 62, 73, 0.08);
+
+  --aurora-container: 1200px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+body {
+  background: transparent;
+  color: var(--aurora-text);
+  font-family: "Dosis", sans-serif;
+  line-height: 1.55;
+}
+
+.aurora-component {
+  width: 100%;
+  max-width: 100%;
+  padding: 12px;
+}
+
+.aurora-container {
+  width: 100%;
+  max-width: var(--aurora-container);
+  margin: 0 auto;
+}
+
+.aurora-panel {
+  background: var(--aurora-background);
+  border: 1px solid var(--aurora-border);
+  border-radius: var(--aurora-radius-lg);
+  box-shadow: var(--aurora-shadow);
+}
+
+.aurora-kicker {
+  margin: 0 0 10px;
+  color: var(--aurora-accent-dark);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.aurora-title {
+  margin: 0;
+  color: var(--aurora-primary);
+  font-size: clamp(2rem, 6vw, 4.2rem);
+  font-weight: 700;
+  line-height: 1.03;
+  letter-spacing: -0.03em;
+}
+
+.aurora-section-title {
+  margin: 0;
+  color: var(--aurora-primary);
+  font-size: clamp(1.55rem, 4vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.aurora-text {
+  color: var(--aurora-text-light);
+  font-size: clamp(1rem, 2.2vw, 1.12rem);
+  font-weight: 400;
+  line-height: 1.65;
+}
+
+.aurora-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.aurora-chip--success {
+  color: var(--aurora-success);
+  background: #e9f6f2;
+}
+
+.aurora-chip--warning {
+  color: var(--aurora-warning);
+  background: #fbf2e4;
+}
+
+.aurora-chip--pending {
+  color: #66767a;
+  background: #f1f4f4;
+}
+
+.aurora-card {
+  background: var(--aurora-background);
+  border: 1px solid var(--aurora-border);
+  border-radius: var(--aurora-radius-md);
+  box-shadow: 0 8px 22px rgba(31, 62, 73, 0.05);
+}
+
+@media (min-width: 760px) {
+  .aurora-component {
+    padding: 18px;
+  }
+}

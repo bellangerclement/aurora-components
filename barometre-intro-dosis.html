@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baromètre PSDM</title>
+  <link rel="stylesheet" href="aurora-design.css">
+  <style>
+    body { overflow-y: hidden; }
+
+    .intro {
+      padding: 30px 6px 26px;
+      border-bottom: 1px solid var(--aurora-border);
+    }
+
+    .intro-copy {
+      max-width: 850px;
+    }
+
+    .intro-subtitle {
+      margin: 16px 0 0;
+      max-width: 780px;
+    }
+
+    .intro-meta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 5px;
+      margin-top: 22px;
+      padding-left: 14px;
+      border-left: 3px solid var(--aurora-accent);
+    }
+
+    .meta-label {
+      color: var(--aurora-text-light);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .meta-value {
+      color: var(--aurora-primary);
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    @media (min-width: 760px) {
+      .intro {
+        padding: 44px 8px 34px;
+      }
+
+      .intro-meta {
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="aurora-component">
+    <div class="aurora-container intro">
+      <div class="intro-copy">
+        <p class="aurora-kicker">Observatoire national</p>
+        <h1 class="aurora-title">Baromètre de la certification PSDM</h1>
+        <p class="aurora-text intro-subtitle">
+          Suivi de l’avancement de la certification des prestataires de services
+          et distributeurs de matériel.
+        </p>
+
+        <div class="intro-meta">
+          <span class="meta-label">Dernière mise à jour</span>
+          <span class="meta-value">1er août 2026</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
