@@ -565,6 +565,144 @@
         margin-left: 22px;
       }
     }
+  
+    .verification-bar {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+      margin-top: 18px;
+      padding: 14px 16px;
+      background: var(--aurora-bg-soft);
+      border: 1px solid var(--aurora-line);
+      border-radius: 14px;
+    }
+
+    .verification-bar strong {
+      color: var(--aurora-dark);
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .verification-bar span {
+      color: var(--aurora-muted);
+      font-size: 0.92rem;
+    }
+
+    .documents-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .document-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 190px;
+      padding: 18px;
+      background: #ffffff;
+      border: 1px solid var(--aurora-line);
+      border-radius: var(--radius-md);
+      box-shadow: 0 8px 22px rgba(31, 62, 73, 0.05);
+    }
+
+    .document-card h3 {
+      margin-bottom: 8px;
+    }
+
+    .document-card p {
+      margin-bottom: 14px;
+      color: var(--aurora-muted);
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+
+    .document-status {
+      display: inline-flex;
+      width: fit-content;
+      min-height: 30px;
+      align-items: center;
+      margin-bottom: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 700;
+    }
+
+    .document-status--published {
+      color: #2f8f7f;
+      background: #e9f6f2;
+    }
+
+    .document-status--waiting {
+      color: var(--aurora-wait);
+      background: var(--aurora-wait-soft);
+    }
+
+    .document-link {
+      display: inline-flex;
+      margin-top: auto;
+      color: var(--aurora-dark-soft);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .document-link:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .versions {
+      display: grid;
+      gap: 0;
+      margin-top: 22px;
+      border-top: 1px solid var(--aurora-line);
+    }
+
+    .version-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 6px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--aurora-line);
+    }
+
+    .version-number {
+      color: var(--aurora-green-dark);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .version-date {
+      color: var(--aurora-muted);
+      font-size: 0.88rem;
+    }
+
+    .version-description {
+      color: var(--aurora-dark);
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    @media (min-width: 760px) {
+      .verification-bar {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .documents-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .version-row {
+        grid-template-columns: 120px 160px minmax(0, 1fr);
+        align-items: center;
+        gap: 16px;
+      }
+    }
+
   </style>
 </head>
 
@@ -583,6 +721,11 @@
         <div class="intro-meta">
           <span class="meta-label">Dernière mise à jour</span>
           <span class="meta-value">1er août 2026</span>
+        </div>
+
+        <div class="verification-bar">
+          <strong>Dernière vérification du Baromètre</strong>
+          <span>1er août 2026 à 22 h 40</span>
         </div>
       </header>
 
@@ -770,6 +913,78 @@
               <li>Le calendrier consolidé des premiers cycles.</li>
             </ul>
           </article>
+        </div>
+      </section>
+
+
+      <section class="section panel panel-pad" aria-labelledby="documents-title">
+        <p class="kicker">Bibliothèque officielle</p>
+        <h2 id="documents-title">Textes officiels</h2>
+        <p class="lead">
+          Les principaux documents qui structurent actuellement le dispositif de certification PSDM.
+        </p>
+
+        <div class="documents-grid">
+          <article class="document-card">
+            <span class="document-status document-status--published">Publié</span>
+            <h3>RBPP PSDM</h3>
+            <p>
+              Référentiel de bonnes pratiques professionnelles applicable aux prestataires
+              de services et distributeurs de matériel.
+            </p>
+            <a class="document-link" href="https://www.has-sante.fr/" target="_blank" rel="noopener">
+              Consulter la publication officielle →
+            </a>
+          </article>
+
+          <article class="document-card">
+            <span class="document-status document-status--published">Publié</span>
+            <h3>Décret relatif à la certification PSDM</h3>
+            <p>
+              Texte réglementaire complétant le cadre juridique du futur dispositif de certification.
+            </p>
+            <a class="document-link" href="https://www.legifrance.gouv.fr/" target="_blank" rel="noopener">
+              Consulter Légifrance →
+            </a>
+          </article>
+
+          <article class="document-card">
+            <span class="document-status document-status--waiting">Non publié</span>
+            <h3>Manuel de certification PSDM HAS</h3>
+            <p>
+              Document attendu pour préciser les modalités opérationnelles du cycle de certification.
+            </p>
+          </article>
+
+          <article class="document-card">
+            <span class="document-status document-status--waiting">Non ouvert</span>
+            <h3>Programme d’accréditation COFRAC</h3>
+            <p>
+              Programme attendu pour l’évaluation et l’accréditation des organismes certificateurs.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section panel panel-pad" aria-labelledby="versions-title">
+        <p class="kicker">Suivi éditorial</p>
+        <h2 id="versions-title">Historique des versions</h2>
+        <p class="lead">
+          Les principales évolutions apportées au Baromètre PSDM.
+        </p>
+
+        <div class="versions">
+          <div class="version-row">
+            <span class="version-number">Version 1.1</span>
+            <span class="version-date">1er août 2026</span>
+            <span class="version-description">Ajout des textes officiels, de la dernière vérification et de l’historique des versions.</span>
+          </div>
+
+          <div class="version-row">
+            <span class="version-number">Version 1.0</span>
+            <span class="version-date">1er août 2026</span>
+            <span class="version-description">Création de l’Observatoire national de la certification PSDM.</span>
+          </div>
         </div>
       </section>
 
