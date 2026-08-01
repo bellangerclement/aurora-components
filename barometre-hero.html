@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Baromètre PSDM - Aurora Cabinet</title>
+
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --surface: #ffffff;
+      --text: #1f2937;
+      --muted: #667085;
+      --line: #dfe5ec;
+
+      --brand: #29435f;
+      --brand-soft: #edf3f8;
+
+      --accent: #b18a57;
+      --accent-soft: #f5ecdf;
+
+      --success: #2f6f5e;
+      --success-soft: #eaf5f1;
+
+      --warning: #94641f;
+      --warning-soft: #fbf2e3;
+
+      --pending: #667085;
+      --pending-soft: #f2f4f7;
+
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --shadow: 0 18px 55px rgba(41, 67, 95, 0.10);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: transparent;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.55;
+    }
+
+    .barometre-hero {
+      width: 100%;
+      padding: 16px;
+    }
+
+    .hero-card {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 20px;
+      background:
+        radial-gradient(circle at top right, rgba(177, 138, 87, 0.13), transparent 34%),
+        linear-gradient(145deg, #ffffff 0%, #f9fbfd 100%);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      right: -120px;
+      top: -120px;
+      border-radius: 50%;
+      background: var(--brand-soft);
+      opacity: 0.85;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 900px;
+      color: var(--brand);
+      font-size: clamp(2rem, 7vw, 4.8rem);
+      line-height: 1.02;
+      letter-spacing: -0.045em;
+    }
+
+    .intro {
+      max-width: 860px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 2.6vw, 1.18rem);
+    }
+
+    .status-row {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 38px;
+      padding: 9px 13px;
+      color: var(--warning);
+      background: var(--warning-soft);
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .status-badge::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: currentColor;
+      flex: 0 0 auto;
+    }
+
+    .update {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .situation {
+      margin-top: 22px;
+      padding: 18px;
+      background: rgba(255,255,255,0.82);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+    }
+
+    .situation h2 {
+      margin: 0 0 8px;
+      color: var(--brand);
+      font-size: 1.15rem;
+    }
+
+    .situation p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .progress-block {
+      margin-top: 24px;
+    }
+
+    .progress-head {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .progress-head strong {
+      color: var(--brand);
+      font-size: 1rem;
+    }
+
+    .progress-head span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 13px;
+      overflow: hidden;
+      background: #e9edf2;
+      border-radius: 999px;
+    }
+
+    .progress-fill {
+      width: 43%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--brand), var(--accent));
+      border-radius: 999px;
+    }
+
+    .progress-caption {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .summary-card {
+      padding: 18px;
+      background: rgba(255,255,255,0.86);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+    }
+
+    .summary-card strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--brand);
+      font-size: clamp(1.8rem, 7vw, 2.7rem);
+      line-height: 1;
+    }
+
+    .summary-card span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .steps-title {
+      margin: 28px 0 14px;
+      color: var(--brand);
+      font-size: clamp(1.35rem, 4vw, 2rem);
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .step-card {
+      padding: 17px;
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+    }
+
+    .step-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .step-number {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      flex: 0 0 auto;
+      color: var(--brand);
+      background: var(--brand-soft);
+      border-radius: 50%;
+      font-weight: 700;
+    }
+
+    .step-status {
+      display: inline-flex;
+      min-height: 30px;
+      align-items: center;
+      padding: 5px 9px;
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .step-status--done {
+      color: var(--success);
+      background: var(--success-soft);
+    }
+
+    .step-status--active {
+      color: var(--warning);
+      background: var(--warning-soft);
+    }
+
+    .step-status--pending {
+      color: var(--pending);
+      background: var(--pending-soft);
+    }
+
+    .step-card h3 {
+      margin: 0 0 7px;
+      color: var(--brand);
+      font-size: 1.05rem;
+    }
+
+    .step-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .source-note {
+      margin: 20px 0 0;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    @media (min-width: 680px) {
+      .barometre-hero {
+        padding: 22px;
+      }
+
+      .hero-card {
+        padding: 40px 34px;
+      }
+
+      .status-row,
+      .progress-head {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .summary-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1040px) {
+      .hero-card {
+        padding: 52px 48px;
+      }
+
+      .steps-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <section class="barometre-hero" aria-labelledby="barometre-title">
+    <div class="hero-card">
+      <div class="hero-content">
+
+        <p class="eyebrow">Observatoire indépendant</p>
+
+        <h1 id="barometre-title">
+          Baromètre de la certification PSDM
+        </h1>
+
+        <p class="intro">
+          Un suivi neutre et actualisé de l’avancement réglementaire,
+          des publications officielles et des prochaines étapes liées à
+          la certification des prestataires de services et distributeurs de matériel.
+        </p>
+
+        <div class="status-row">
+          <span class="status-badge">
+            Procédure HAS en cours de finalisation
+          </span>
+
+          <span class="update">
+            Dernière mise à jour : 1er août 2026
+          </span>
+        </div>
+
+        <div class="situation">
+          <h2>Situation actuelle</h2>
+          <p>
+            Le cadre réglementaire, le référentiel HAS et le décret sont publiés.
+            La procédure complète de certification ainsi que l’ouverture opérationnelle
+            du programme d’accréditation Cofrac restent attendues.
+          </p>
+        </div>
+
+        <div class="progress-block">
+          <div class="progress-head">
+            <strong>Avancement du dispositif</strong>
+            <span>3 étapes finalisées sur 7</span>
+          </div>
+
+          <div class="progress-track" aria-label="Avancement estimé : 43 %">
+            <div class="progress-fill"></div>
+          </div>
+
+          <div class="progress-caption">
+            <span>Cadre initial</span>
+            <span>Déploiement opérationnel</span>
+          </div>
+        </div>
+
+        <div class="summary-grid">
+          <article class="summary-card">
+            <strong>3/7</strong>
+            <span>étapes structurantes finalisées</span>
+          </article>
+
+          <article class="summary-card">
+            <strong>43 %</strong>
+            <span>avancement indicatif du dispositif</span>
+          </article>
+
+          <article class="summary-card">
+            <strong>HAS</strong>
+            <span>prochaine publication majeure attendue</span>
+          </article>
+        </div>
+
+        <h2 class="steps-title">Les étapes du dispositif</h2>
+
+        <div class="steps-grid">
+
+          <article class="step-card">
+            <div class="step-head">
+              <span class="step-number">1</span>
+              <span class="step-status step-status--done">Finalisé</span>
+            </div>
+            <h3>Cadre légal</h3>
+            <p>Le principe de certification obligatoire est prévu par le cadre réglementaire.</p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-head">
+              <span class="step-number">2</span>
+              <span class="step-status step-status--done">Finalisé</span>
+            </div>
+            <h3>Référentiel HAS</h3>
+            <p>Le référentiel de bonnes pratiques constitue le socle de la certification.</p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-head">
+              <span class="step-number">3</span>
+              <span class="step-status step-status--done">Finalisé</span>
+            </div>
+            <h3>Décret d’application</h3>
+            <p>Le décret complète le cadre opérationnel du futur dispositif.</p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-head">
+              <span class="step-number">4</span>
+              <span class="step-status step-status--active">En cours</span>
+            </div>
+            <h3>Procédure HAS</h3>
+            <p>Les modalités détaillées d’octroi, de surveillance et de retrait restent attendues.</p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-head">
+              <span class="step-number">5</span>
+              <span class="step-status step-status--pending">En attente</span>
+            </div>
+            <h3>Programme Cofrac</h3>
+            <p>L’ouverture opérationnelle du programme d’accréditation reste à confirmer.</p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-head">
+              <span class="step-number">6</span>
+              <span class="step-status step-status--pending">En attente</span>
+            </div>
+            <h3>Organismes accrédités</h3>
+            <p>La liste des organismes certificateurs accrédités n’est pas encore publiée.</p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-head">
+              <span class="step-number">7</span>
+              <span class="step-status step-status--pending">En attente</span>
+            </div>
+            <h3>Premiers cycles</h3>
+            <p>Les premiers cycles pourront débuter après l’achèvement des étapes précédentes.</p>
+          </article>
+
+        </div>
+
+        <p class="source-note">
+          Indicateur éditorial Aurora Cabinet. Les publications officielles de la HAS,
+          du Cofrac et de Légifrance restent les seules références faisant foi.
+        </p>
+
+      </div>
+    </div>
+  </section>
+</body>
+</html>
