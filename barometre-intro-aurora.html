@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Baromètre PSDM - Aurora Cabinet</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --aurora-blue: #243b55;
+      --aurora-blue-soft: #52677d;
+      --aurora-gold: #c2a46d;
+      --aurora-text: #26313d;
+      --aurora-muted: #6d7782;
+      --aurora-line: #e4e8ec;
+      --aurora-white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    body {
+      overflow-y: hidden;
+      background: transparent;
+      font-family: "Montserrat", Arial, sans-serif;
+      color: var(--aurora-text);
+    }
+
+    .barometre-intro {
+      width: 100%;
+      padding: 8px 12px;
+    }
+
+    .intro-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 34px 4px 28px;
+      border-bottom: 1px solid var(--aurora-line);
+    }
+
+    .kicker {
+      margin: 0 0 13px;
+      color: var(--aurora-gold);
+      font-size: 0.76rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 880px;
+      margin: 0;
+      color: var(--aurora-blue);
+      font-size: clamp(2rem, 6vw, 4.1rem);
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+    }
+
+    .subtitle {
+      max-width: 800px;
+      margin: 18px 0 0;
+      color: var(--aurora-muted);
+      font-size: clamp(0.98rem, 2.4vw, 1.12rem);
+      font-weight: 400;
+      line-height: 1.7;
+    }
+
+    .meta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+      margin-top: 24px;
+      padding-left: 14px;
+      border-left: 3px solid var(--aurora-gold);
+    }
+
+    .meta-label {
+      color: var(--aurora-muted);
+      font-size: 0.76rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .meta-date {
+      color: var(--aurora-blue);
+      font-size: 0.94rem;
+      font-weight: 600;
+    }
+
+    @media (min-width: 760px) {
+      .barometre-intro {
+        padding: 14px 22px;
+      }
+
+      .intro-inner {
+        padding: 48px 8px 38px;
+      }
+
+      .meta {
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
+        padding-left: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="barometre-intro" aria-labelledby="barometre-title">
+    <div class="intro-inner">
+
+      <p class="kicker">Observatoire national</p>
+
+      <h1 id="barometre-title">
+        Baromètre de la certification PSDM
+      </h1>
+
+      <p class="subtitle">
+        Suivi de l’avancement de la certification des prestataires de services
+        et distributeurs de matériel.
+      </p>
+
+      <div class="meta">
+        <span class="meta-label">Dernière mise à jour</span>
+        <span class="meta-date">1er août 2026</span>
+      </div>
+
+    </div>
+  </header>
+
+  <script>
+    function notifyHeight() {
+      window.parent.postMessage(
+        {
+          type: "aurora-component-height",
+          component: "barometre-intro",
+          height: document.documentElement.scrollHeight
+        },
+        "*"
+      );
+    }
+
+    window.addEventListener("load", notifyHeight);
+    window.addEventListener("resize", notifyHeight);
+
+    if ("ResizeObserver" in window) {
+      new ResizeObserver(notifyHeight).observe(document.body);
+    }
+  </script>
+</body>
+</html>
