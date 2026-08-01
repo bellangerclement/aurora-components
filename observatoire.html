@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Observatoire national de la certification PSDM | Aurora Cabinet</title>
+  <meta name="description" content="Aurora Cabinet centralise les informations publiques relatives à la certification PSDM : baromètre, RBPP, manuel HAS, décret et programme COFRAC." />
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --aurora-dark: #243f49;
+  --aurora-dark-soft: #3d6a78;
+  --aurora-green: #56c6ae;
+  --aurora-green-dark: #38b99f;
+  --aurora-green-soft: #e9f8f5;
+  --aurora-bg: #ffffff;
+  --aurora-bg-soft: #f7fbfa;
+  --aurora-line: #dce9e6;
+  --aurora-text: #243f49;
+  --aurora-muted: #68767c;
+  --aurora-wait: #c88933;
+  --aurora-shadow: 0 12px 30px rgba(31, 62, 73, 0.08);
+  --radius-lg: 26px;
+  --radius-md: 18px;
+  --container: 1200px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+body {
+  background: #ffffff;
+  color: var(--aurora-text);
+  font-family: "Dosis", Arial, sans-serif;
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+}
+
+.page {
+  width: 100%;
+  padding: 16px;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+.hero {
+  padding: 34px 4px 30px;
+  border-bottom: 1px solid var(--aurora-line);
+}
+
+.kicker {
+  margin: 0 0 10px;
+  color: var(--aurora-green-dark);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  max-width: 950px;
+  margin-bottom: 0;
+  color: var(--aurora-dark);
+  font-size: clamp(2.2rem, 6vw, 4.6rem);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+}
+
+h2 {
+  margin-bottom: 0;
+  color: var(--aurora-dark);
+  font-size: clamp(1.55rem, 4vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.12;
+}
+
+h3 {
+  margin-bottom: 8px;
+  color: var(--aurora-dark);
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.lead {
+  max-width: 840px;
+  margin: 16px 0 0;
+  color: var(--aurora-muted);
+  font-size: clamp(1rem, 2.2vw, 1.15rem);
+  line-height: 1.65;
+}
+
+.section {
+  margin-top: 18px;
+}
+
+.panel {
+  padding: 24px 18px;
+  background: #ffffff;
+  border: 1px solid var(--aurora-line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--aurora-shadow);
+}
+
+.text {
+  color: var(--aurora-muted);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.card {
+  padding: 18px;
+  background: #ffffff;
+  border: 1px solid var(--aurora-line);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 22px rgba(31, 62, 73, 0.05);
+}
+
+.card p {
+  margin-bottom: 0;
+  color: var(--aurora-muted);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  margin-top: 16px;
+  padding: 13px 20px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--aurora-dark), var(--aurora-green));
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.button:hover {
+  filter: brightness(0.98);
+}
+
+.link-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.link-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 52px;
+  padding: 13px 15px;
+  background: var(--aurora-bg-soft);
+  border: 1px solid var(--aurora-line);
+  border-radius: 14px;
+  color: var(--aurora-dark);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.link-item span:last-child {
+  color: var(--aurora-green-dark);
+}
+
+.source-list {
+  margin: 14px 0 0;
+  padding-left: 20px;
+  color: var(--aurora-muted);
+}
+
+.source-list li {
+  margin-bottom: 8px;
+}
+
+.meta {
+  margin-top: 22px;
+  padding-left: 14px;
+  border-left: 3px solid var(--aurora-green);
+}
+
+.meta span {
+  display: block;
+}
+
+.meta-label {
+  color: var(--aurora-muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.meta-value {
+  margin-top: 3px;
+  color: var(--aurora-dark);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.notice {
+  margin-top: 18px;
+  padding: 16px;
+  background: var(--aurora-bg-soft);
+  border: 1px solid var(--aurora-line);
+  border-radius: 14px;
+  color: var(--aurora-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+@media (min-width: 760px) {
+  .page {
+    padding: 22px;
+  }
+
+  .hero {
+    padding: 48px 8px 38px;
+  }
+
+  .panel {
+    padding: 34px 30px;
+  }
+
+  .grid--2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid--3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+</style>
+</head>
+<body>
+  <main class="page">
+    <div class="container">
+      <header class="hero">
+        <p class="kicker">Aurora Cabinet</p>
+        <h1>Observatoire national de la certification PSDM</h1>
+        <p class="lead">
+          Un espace public d’information dédié au suivi de la certification des
+          prestataires de services et distributeurs de matériel.
+        </p>
+
+        <div class="meta">
+          <span class="meta-label">Dernière mise à jour</span>
+          <span class="meta-value">1er août 2026</span>
+        </div>
+      </header>
+
+      <section class="section panel" aria-labelledby="mission-title">
+        <p class="kicker">Mission de l’Observatoire</p>
+        <h2 id="mission-title">Centraliser et rendre lisible l’information officielle</h2>
+        <p class="text" style="margin-top:14px;">
+          L’Observatoire national de la certification PSDM est un espace d’information
+          proposé par Aurora Cabinet. Il a pour vocation de centraliser les principales
+          informations publiques relatives à la certification des PSDM, de suivre les
+          publications officielles et de faciliter la compréhension du dispositif.
+        </p>
+        <p class="text">
+          Les informations présentées sont régulièrement actualisées à partir des sources
+          institutionnelles disponibles.
+        </p>
+      </section>
+
+      <section class="section panel" aria-labelledby="barometre-title">
+        <p class="kicker">Suivi du dispositif</p>
+        <h2 id="barometre-title">Le Baromètre PSDM</h2>
+        <p class="text" style="margin-top:14px;">
+          Le Baromètre PSDM présente l’état d’avancement du dispositif de certification,
+          les éléments déjà publiés et les principales étapes encore attendues.
+        </p>
+
+        <div class="grid grid--2">
+          <article class="card">
+            <h3>Situation réglementaire</h3>
+            <p>État du RBPP PSDM, du décret, du manuel HAS et du programme d’accréditation COFRAC.</p>
+          </article>
+
+          <article class="card">
+            <h3>Chronologie officielle</h3>
+            <p>Repères datés permettant de suivre les principales évolutions du dispositif.</p>
+          </article>
+        </div>
+
+        <a class="button" href="https://www.aurora-cabinet.fr/barometre-psdm" target="_blank" rel="noopener">
+          Accéder au Baromètre PSDM
+        </a>
+      </section>
+
+      <section class="section panel" aria-labelledby="resources-title">
+        <p class="kicker">Ressources</p>
+        <h2 id="resources-title">Les pages de l’Observatoire</h2>
+        <p class="text" style="margin-top:14px;">
+          Chaque page est consacrée à une thématique précise afin de faciliter l’accès
+          à l’information et d’éviter les contenus trop généraux.
+        </p>
+
+        <div class="link-list">
+          <a class="link-item" href="https://www.aurora-cabinet.fr/observatoire/rbpp-psdm" target="_blank" rel="noopener">
+            <span>RBPP PSDM</span><span>→</span>
+          </a>
+          <a class="link-item" href="https://www.aurora-cabinet.fr/observatoire/manuel-certification-psdm-has" target="_blank" rel="noopener">
+            <span>Manuel de certification PSDM HAS</span><span>→</span>
+          </a>
+          <a class="link-item" href="https://www.aurora-cabinet.fr/observatoire/decret-certification-psdm" target="_blank" rel="noopener">
+            <span>Décret relatif à la certification PSDM</span><span>→</span>
+          </a>
+          <a class="link-item" href="https://www.aurora-cabinet.fr/observatoire/cofrac-psdm" target="_blank" rel="noopener">
+            <span>Programme d’accréditation COFRAC</span><span>→</span>
+          </a>
+          <a class="link-item" href="https://www.aurora-cabinet.fr/observatoire/faq-psdm" target="_blank" rel="noopener">
+            <span>FAQ certification PSDM</span><span>→</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="section panel" aria-labelledby="sources-title">
+        <p class="kicker">Références</p>
+        <h2 id="sources-title">Sources institutionnelles suivies</h2>
+        <ul class="source-list">
+          <li>Haute Autorité de santé</li>
+          <li>Légifrance</li>
+          <li>Cofrac</li>
+          <li>Autres sources institutionnelles pertinentes selon les publications</li>
+        </ul>
+
+        <div class="notice">
+          Les publications officielles restent les seules références faisant foi.
+          L’Observatoire a une vocation informative et éditoriale.
+        </div>
+      </section>
+
+      <section class="section panel" aria-labelledby="aurora-title">
+        <p class="kicker">Aurora Cabinet</p>
+        <h2 id="aurora-title">Un observatoire porté par Aurora Cabinet</h2>
+        <p class="text" style="margin-top:14px;">
+          Aurora Cabinet développe cet Observatoire afin de contribuer à une meilleure
+          compréhension du dispositif de certification PSDM et de ses évolutions.
+        </p>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RBPP PSDM : référentiel de bonnes pratiques professionnelles | Aurora Cabinet</title>
+  <meta name="description" content="Comprendre le RBPP PSDM : rôle, objectifs, structure et différence avec le Manuel de certification PSDM HAS." />
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --aurora-dark: #243f49;
+  --aurora-dark-soft: #3d6a78;
+  --aurora-green: #56c6ae;
+  --aurora-green-dark: #38b99f;
+  --aurora-green-soft: #e9f8f5;
+  --aurora-bg: #ffffff;
+  --aurora-bg-soft: #f7fbfa;
+  --aurora-line: #dce9e6;
+  --aurora-text: #243f49;
+  --aurora-muted: #68767c;
+  --aurora-wait: #c88933;
+  --aurora-shadow: 0 12px 30px rgba(31, 62, 73, 0.08);
+  --radius-lg: 26px;
+  --radius-md: 18px;
+  --container: 1200px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+body {
+  background: #ffffff;
+  color: var(--aurora-text);
+  font-family: "Dosis", Arial, sans-serif;
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+}
+
+.page {
+  width: 100%;
+  padding: 16px;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+.hero {
+  padding: 34px 4px 30px;
+  border-bottom: 1px solid var(--aurora-line);
+}
+
+.kicker {
+  margin: 0 0 10px;
+  color: var(--aurora-green-dark);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  max-width: 950px;
+  margin-bottom: 0;
+  color: var(--aurora-dark);
+  font-size: clamp(2.2rem, 6vw, 4.6rem);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+}
+
+h2 {
+  margin-bottom: 0;
+  color: var(--aurora-dark);
+  font-size: clamp(1.55rem, 4vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.12;
+}
+
+h3 {
+  margin-bottom: 8px;
+  color: var(--aurora-dark);
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.lead {
+  max-width: 840px;
+  margin: 16px 0 0;
+  color: var(--aurora-muted);
+  font-size: clamp(1rem, 2.2vw, 1.15rem);
+  line-height: 1.65;
+}
+
+.section {
+  margin-top: 18px;
+}
+
+.panel {
+  padding: 24px 18px;
+  background: #ffffff;
+  border: 1px solid var(--aurora-line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--aurora-shadow);
+}
+
+.text {
+  color: var(--aurora-muted);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.card {
+  padding: 18px;
+  background: #ffffff;
+  border: 1px solid var(--aurora-line);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 22px rgba(31, 62, 73, 0.05);
+}
+
+.card p {
+  margin-bottom: 0;
+  color: var(--aurora-muted);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  margin-top: 16px;
+  padding: 13px 20px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--aurora-dark), var(--aurora-green));
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.button:hover {
+  filter: brightness(0.98);
+}
+
+.link-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.link-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 52px;
+  padding: 13px 15px;
+  background: var(--aurora-bg-soft);
+  border: 1px solid var(--aurora-line);
+  border-radius: 14px;
+  color: var(--aurora-dark);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.link-item span:last-child {
+  color: var(--aurora-green-dark);
+}
+
+.source-list {
+  margin: 14px 0 0;
+  padding-left: 20px;
+  color: var(--aurora-muted);
+}
+
+.source-list li {
+  margin-bottom: 8px;
+}
+
+.meta {
+  margin-top: 22px;
+  padding-left: 14px;
+  border-left: 3px solid var(--aurora-green);
+}
+
+.meta span {
+  display: block;
+}
+
+.meta-label {
+  color: var(--aurora-muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.meta-value {
+  margin-top: 3px;
+  color: var(--aurora-dark);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.notice {
+  margin-top: 18px;
+  padding: 16px;
+  background: var(--aurora-bg-soft);
+  border: 1px solid var(--aurora-line);
+  border-radius: 14px;
+  color: var(--aurora-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+@media (min-width: 760px) {
+  .page {
+    padding: 22px;
+  }
+
+  .hero {
+    padding: 48px 8px 38px;
+  }
+
+  .panel {
+    padding: 34px 30px;
+  }
+
+  .grid--2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid--3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+</style>
+</head>
+<body>
+  <main class="page">
+    <div class="container">
+      <header class="hero">
+        <p class="kicker">Observatoire PSDM</p>
+        <h1>RBPP PSDM : le référentiel de bonnes pratiques professionnelles</h1>
+        <p class="lead">
+          Comprendre le rôle du RBPP PSDM dans le futur dispositif de certification
+          des prestataires de services et distributeurs de matériel.
+        </p>
+
+        <div class="meta">
+          <span class="meta-label">Dernière mise à jour</span>
+          <span class="meta-value">1er août 2026</span>
+        </div>
+      </header>
+
+      <section class="section panel" aria-labelledby="definition-title">
+        <p class="kicker">Définition</p>
+        <h2 id="definition-title">Qu’est-ce que le RBPP PSDM ?</h2>
+        <p class="text" style="margin-top:14px;">
+          Le référentiel de bonnes pratiques professionnelles des prestataires de
+          services et distributeurs de matériel constitue le socle documentaire de la
+          future certification PSDM.
+        </p>
+        <p class="text">
+          Élaboré sous l’autorité de la Haute Autorité de santé, il décrit les exigences
+          de qualité attendues dans les pratiques professionnelles des PSDM.
+        </p>
+      </section>
+
+      <section class="section panel" aria-labelledby="role-title">
+        <p class="kicker">Fonction du référentiel</p>
+        <h2 id="role-title">Quel est son rôle ?</h2>
+        <p class="text" style="margin-top:14px;">
+          Le RBPP définit les exigences de référence applicables aux PSDM. Il constitue
+          le document de base sur lequel s’appuiera le dispositif de certification.
+        </p>
+      </section>
+
+      <section class="section panel" aria-labelledby="objectifs-title">
+        <p class="kicker">Objectifs</p>
+        <h2 id="objectifs-title">À quoi sert-il ?</h2>
+
+        <div class="grid grid--2">
+          <article class="card">
+            <h3>Qualité des prestations</h3>
+            <p>Renforcer la qualité des prestations délivrées aux personnes accompagnées.</p>
+          </article>
+
+          <article class="card">
+            <h3>Harmonisation des pratiques</h3>
+            <p>Proposer un cadre commun pour les pratiques professionnelles des PSDM.</p>
+          </article>
+
+          <article class="card">
+            <h3>Sécurité des personnes</h3>
+            <p>Contribuer à la sécurité des patients, usagers et bénéficiaires des prestations.</p>
+          </article>
+
+          <article class="card">
+            <h3>Amélioration continue</h3>
+            <p>Favoriser l’analyse des pratiques et l’amélioration continue de l’organisation.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section panel" aria-labelledby="structure-title">
+        <p class="kicker">Organisation du document</p>
+        <h2 id="structure-title">Structure du RBPP PSDM</h2>
+        <p class="text" style="margin-top:14px;">
+          Le référentiel est organisé autour de plusieurs thématiques couvrant notamment :
+        </p>
+
+        <div class="grid grid--2">
+          <article class="card">
+            <h3>Droits de la personne</h3>
+            <p>Respect des droits, information, consentement et prise en compte des besoins.</p>
+          </article>
+
+          <article class="card">
+            <h3>Organisation des prestations</h3>
+            <p>Organisation, coordination et continuité des prestations délivrées.</p>
+          </article>
+
+          <article class="card">
+            <h3>Pratiques professionnelles</h3>
+            <p>Exigences applicables aux interventions et à la qualité des pratiques.</p>
+          </article>
+
+          <article class="card">
+            <h3>Management et amélioration continue</h3>
+            <p>Pilotage de la qualité, gestion des risques et suivi des actions d’amélioration.</p>
+          </article>
+        </div>
+
+        <div class="notice">
+          Cette présentation reste volontairement synthétique. La publication officielle
+          du document et les futures modalités de certification demeurent les références à consulter.
+        </div>
+      </section>
+
+      <section class="section panel" aria-labelledby="difference-title">
+        <p class="kicker">Distinction essentielle</p>
+        <h2 id="difference-title">Quelle différence avec le Manuel de certification PSDM HAS ?</h2>
+
+        <div class="grid grid--2">
+          <article class="card">
+            <h3>RBPP PSDM</h3>
+            <p>
+              Il décrit les exigences de bonnes pratiques professionnelles attendues
+              des prestataires de services et distributeurs de matériel.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Manuel de certification PSDM HAS</h3>
+            <p>
+              Il devra préciser les modalités opérationnelles du cycle de certification,
+              notamment l’évaluation, la décision, la surveillance et le renouvellement.
+            </p>
+          </article>
+        </div>
+
+        <p class="text" style="margin-top:18px;">
+          Le RBPP constitue donc le référentiel de fond, tandis que le Manuel de certification
+          précisera les règles d’application du dispositif.
+        </p>
+      </section>
+
+      <section class="section panel" aria-labelledby="consultation-title">
+        <p class="kicker">Source officielle</p>
+        <h2 id="consultation-title">Où consulter le RBPP PSDM ?</h2>
+        <p class="text" style="margin-top:14px;">
+          Le document est disponible sur le site officiel de la Haute Autorité de santé.
+        </p>
+
+        <a class="button" href="https://www.has-sante.fr/" target="_blank" rel="noopener">
+          Consulter le RBPP PSDM sur le site de la HAS
+        </a>
+      </section>
+
+      <section class="section panel" aria-labelledby="navigation-title">
+        <p class="kicker">Poursuivre la lecture</p>
+        <h2 id="navigation-title">Autres pages de l’Observatoire</h2>
+
+        <div class="link-list">
+          <a class="link-item" href="https://www.aurora-cabinet.fr/observatoire" target="_blank" rel="noopener">
+            <span>Observatoire national de la certification PSDM</span><span>→</span>
+          </a>
+          <a class="link-item" href="https://www.aurora-cabinet.fr/barometre-psdm" target="_blank" rel="noopener">
+            <span>Baromètre PSDM</span><span>→</span>
+          </a>
+          <a class="link-item" href="https://www.aurora-cabinet.fr/observatoire/manuel-certification-psdm-has" target="_blank" rel="noopener">
+            <span>Manuel de certification PSDM HAS</span><span>→</span>
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
