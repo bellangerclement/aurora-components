@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Baromètre neutre de la certification PSDM : état d'avancement, publications officielles, étapes réglementaires, actualités et sources." />
+  <title>Baromètre PSDM | Aurora Cabinet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="page-shell">
+    <section id="barometre-header" class="hero section-card" aria-labelledby="page-title">
+      <div class="hero__content">
+        <p class="eyebrow">Observatoire indépendant</p>
+        <h1 id="page-title">Baromètre de la certification PSDM</h1>
+        <p class="hero__intro">
+          Un suivi neutre et actualisé de l’avancement réglementaire, des publications officielles
+          et des principales étapes liées à la certification des prestataires de services et distributeurs de matériel.
+        </p>
+
+        <div class="hero__meta">
+          <span id="global-status" class="status-badge status-badge--loading">Chargement du statut…</span>
+          <span id="last-update" class="last-update">Dernière mise à jour : —</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="progress-tracker" class="section-card" aria-labelledby="progress-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">État d’avancement</p>
+          <h2 id="progress-title">Déploiement du dispositif</h2>
+        </div>
+        <p id="progress-summary" class="section-summary">Chargement…</p>
+      </div>
+      <div id="progress-steps" class="progress-steps" aria-live="polite"></div>
+    </section>
+
+    <section id="key-indicators" class="section-card" aria-labelledby="indicators-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Données clés</p>
+          <h2 id="indicators-title">Indicateurs du baromètre</h2>
+        </div>
+      </div>
+      <div id="indicators-grid" class="indicators-grid"></div>
+    </section>
+
+    <section id="official-vs-pending" class="split-grid">
+      <article class="section-card info-panel info-panel--official" aria-labelledby="official-title">
+        <p class="eyebrow">Informations confirmées</p>
+        <h2 id="official-title">Ce qui est officiel</h2>
+        <ul id="official-list" class="clean-list"></ul>
+      </article>
+
+      <article class="section-card info-panel info-panel--pending" aria-labelledby="pending-title">
+        <p class="eyebrow">Points à surveiller</p>
+        <h2 id="pending-title">Ce qui reste attendu</h2>
+        <ul id="pending-list" class="clean-list"></ul>
+      </article>
+    </section>
+
+    <section id="regulatory-steps" class="section-card" aria-labelledby="steps-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Parcours réglementaire</p>
+          <h2 id="steps-title">Étapes du dispositif</h2>
+        </div>
+      </div>
+      <div id="steps-grid" class="steps-grid"></div>
+    </section>
+
+    <section id="timeline" class="section-card" aria-labelledby="timeline-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Chronologie</p>
+          <h2 id="timeline-title">Événements marquants</h2>
+        </div>
+      </div>
+      <div id="timeline-list" class="timeline-list"></div>
+    </section>
+
+    <section id="latest-news" class="section-card" aria-labelledby="news-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Veille récente</p>
+          <h2 id="news-title">Dernières actualités</h2>
+        </div>
+      </div>
+      <div id="news-grid" class="news-grid"></div>
+    </section>
+
+    <section id="visitor-counter" class="section-card visitor-panel" aria-labelledby="visitor-title">
+      <div>
+        <p class="eyebrow">Audience</p>
+        <h2 id="visitor-title">Consultations du baromètre</h2>
+        <p class="muted">Le compteur peut être relié à Supabase, Cloudflare Workers, Railway ou à votre propre API.</p>
+      </div>
+      <div class="visitor-panel__metric">
+        <strong id="visitor-count">—</strong>
+        <span>consultations</span>
+      </div>
+    </section>
+
+    <section id="sources-methodology" class="section-card methodology" aria-labelledby="methodology-title">
+      <details>
+        <summary id="methodology-title">Sources, méthode et limites</summary>
+        <div id="methodology-content" class="methodology__content"></div>
+      </details>
+    </section>
+
+    <footer class="site-footer">
+      <p>Observatoire proposé par Aurora Cabinet.</p>
+      <p>Les informations sont présentées à titre informatif et ne remplacent pas les publications officielles.</p>
+    </footer>
+  </main>
+
+  <noscript>
+    <div class="noscript">JavaScript doit être activé pour afficher le baromètre.</div>
+  </noscript>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

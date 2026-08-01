@@ -1,0 +1,11 @@
+{
+  "introduction": "Le baromètre distingue les informations officielles, les communications de marché et les analyses éditoriales.",
+  "sources": [
+    "Haute Autorité de santé",
+    "Légifrance",
+    "Cofrac",
+    "Communications publiques des organismes et acteurs du secteur"
+  ],
+  "method": "Les étapes sont classées comme finalisées, en cours ou en attente selon les publications accessibles au moment de la mise à jour. Les chiffres de marché sont affichés uniquement lorsqu’une source ou une méthode est explicitée.",
+  "limitations": "Ce baromètre ne constitue ni une décision administrative, ni une interprétation opposable des textes. Les pages officielles restent les seules références faisant foi."
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "date": "2026-07-25",
+    "category": "Marché",
+    "type": "marche",
+    "title": "Renforcement des communications concurrentes",
+    "summary": "Plusieurs acteurs publient des contenus dédiés à la certification PSDM afin de renforcer leur visibilité.",
+    "sourceUrl": null
+  },
+  {
+    "date": "2026-06-24",
+    "category": "Marché",
+    "type": "marche",
+    "title": "Nouvelles pages dédiées à la certification PSDM",
+    "summary": "Des organismes de certification structurent leurs offres et leurs contenus en amont de l’ouverture officielle du marché.",
+    "sourceUrl": null
+  },
+  {
+    "date": "2026-06-11",
+    "category": "HAS",
+    "type": "officiel",
+    "title": "La HAS poursuit les travaux",
+    "summary": "La finalisation de la procédure de certification reste l’étape institutionnelle la plus attendue.",
+    "sourceUrl": "https://www.has-sante.fr/"
+  }
+]
